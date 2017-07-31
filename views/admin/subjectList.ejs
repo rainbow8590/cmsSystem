@@ -1,0 +1,28 @@
+<% include header %>
+
+<div class="container">
+   <table class="table">
+        <tr>
+            <th>学科</th>
+            <th>描述</th>
+            <th>管理</th>
+        </tr>
+        <% dataList.forEach(function(val){%>
+        <tr>
+            <td><%= val.name %></td>
+            <td><%= val.info %></td>
+            <td>
+                <a href="/admin/editSubject/<%= val._id %>">编辑</a>
+                |
+                <a href="/admin/delSubject/<%= val._id %>">删除</a>
+            </td>
+        </tr>
+        <% })%>
+   </table>
+</div>
+
+
+<% include footer %>
+ 
+
+

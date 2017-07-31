@@ -1,0 +1,57 @@
+<% include header %>
+
+<div class="container">
+   <table class="table">
+        <tr>
+            <th>头像</th>
+            <th>姓名</th>
+            <th>年龄</th>
+            <th>性别</th>
+            <th>学科</th>
+            <th>电话</th>
+            <th>邮箱</th>
+            <th>管理</th>
+        </tr>
+        <% dataList.forEach(function(val){%>
+        <tr>
+            <td><img src="/<%= val.headpic %>" style="width:30px;height:30px;border-radius:5px;border:1px solid #ddd;"></td>
+            <td><%= val.name %></td>
+            <td><%= val.age %></td>
+            <td><%= val.sex==1?"男":"女" %></td>
+            <td><%= val.subjectName %></td>
+            <td><%= val.tel %></td>
+            <td><%= val.email %></td>
+            <td>
+                <a href="/admin/editUser/<%= val._id %>">编辑</a>
+                |
+                <a href="/admin/delUser/<%= val._id %>">删除</a>
+            </td>
+        </tr>
+        <% })%>
+   </table>
+    <nav aria-label="Page navigation">
+        <ul class="pagination">
+            <li><a href="/admin/userList/?page=1">首页</a></li>
+            <li>
+              <a href="/admin/userList/?page=<%= page-1 %>" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+              </a>
+            </li>
+            <% for(var i = 1 ; i <= maxPage; i++){%>
+            <li><a href="/admin/userList/?page=<%= i %>"><%= i %></a></li>
+            <% }%>
+            <li>
+              <a href="/admin/userList/?page=<%= page-0+1 %>" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+              </a>
+            </li>
+            <li><a href="/admin/userList/?page=<%= maxPage %>">尾页</a></li>
+        </ul>
+    </nav>
+</div>
+
+
+<% include footer %>
+ 
+
+
